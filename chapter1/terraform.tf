@@ -30,7 +30,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
   alias = "aws-us-east-2"
   profile = "default" # AWS credentials profile configured on your local machine
 }
