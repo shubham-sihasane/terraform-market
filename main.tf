@@ -7,7 +7,21 @@ terraform {
     }
   }
   required_version = "1.14.7" # Terraform version
+
+  backend "s3" {
+    bucket = "happywalaengineer-terraform-state" # Existing bucket name to store state file
+    key = "dev/terraform.tfstate" # State locking file ie. key
+    region = "ap-south-1" # Region of bucket
+    encrypt = true # Enable encryption
+    use_lockfile = true # Enable state locking
+  }
 }
+
+# Template
+# <Block-Type> "<BLOCK_LABEL>" "<BLOCK_LABEL>" {
+#   # Block Body
+#   <IDENTIFIER> = <EXPRESSION> # Argument
+# }
 
 # Terraform provider block
 provider "aws" {
@@ -23,4 +37,8 @@ resource "aws_instance" "webserver" {
     Name = "WebServer"
     Environment = "Development"
   }
+  /*
+    Here, you can write a
+    multi line comment
+  */
 }
